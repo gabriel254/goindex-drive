@@ -262,9 +262,9 @@ function file_code(path){
 // file display video |mp4|webm|avi|
 function file_video(path){
 	var url = window.location.origin + path;
-	var playBtn = `<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="iina://weblink?url=${url}"><i class="mdui-icon material-icons">play_circle_filled</i>Play in IINA</a><br><a href="https://iina.io/">Don't have IINA?</a>`;
+	var playBtn = `<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="iina://weblink?url=${url}"><i class="mdui-icon material-icons">play_circle_filled</i>Play in IINA</a><br><br><a href="https://iina.io/">Don't have IINA?</a>`;
 	if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
-	    playBtn = `	<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="nplayer-${url}"><i class="mdui-icon material-icons">play_circle_filled</i>Play in nPlayer</a><br><a href="https://apps.apple.com/us/app/nplayer-lite/id1078835991">Don't have nPlayer?</a>`;
+	    playBtn = `	<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="nplayer-${url}"><i class="mdui-icon material-icons">play_circle_filled</i>Play in nPlayer</a><br><br><a href="https://apps.apple.com/us/app/nplayer-lite/id1078835991">Don't have nPlayer?</a>`;
 	}
 	var content = `
 <div class="mdui-container-fluid">
