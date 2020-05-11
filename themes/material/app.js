@@ -262,9 +262,9 @@ function file_code(path){
 // file display video |mp4|webm|avi|
 function file_video(path){
 	var url = window.location.origin + path;
-	var playBtn = `<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="iina://weblink?url=${url}"><i class="mdui-icon material-icons">play_circle_filled</i>Play in IINA</a>  <a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="https://iina.io/"><i class="mdui-icon material-icons">get_app</i>Download IINA</a>`;
+	var playBtn = `<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="iina://weblink?url=${url}"><i class="mdui-icon material-icons">play_circle_filled</i>Play in IINA</a>  <a href="https://iina.io/">Don't have IINA?</a>`;
 	if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
-	    playBtn = `	<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="nplayer-${url}"><i class="mdui-icon material-icons">play_circle_filled</i>Play in nPlayer</a>  <a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="https://apps.apple.com/us/app/nplayer-lite/id1078835991"><i class="mdui-icon material-icons">get_app</i>Download nPlayer</a>`;
+	    playBtn = `	<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="nplayer-${url}"><i class="mdui-icon material-icons">play_circle_filled</i>Play in nPlayer</a><a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="https://apps.apple.com/us/app/nplayer-lite/id1078835991"><i class="mdui-icon material-icons">get_app</i>Download nPlayer</a>`;
 	}
 	var content = `
 <div class="mdui-container-fluid">
@@ -272,6 +272,7 @@ function file_video(path){
 	<video class="mdui-video-fluid mdui-center" preload controls>
 	  <source src="${url}" type="video/mp4">
 	</video>
+	<p>由于浏览器本身的限制，有些视频格式无法在浏览器中播放，也无法外挂字幕文件，但可以用下面的播放器直接播放</p>
 	<br>${playBtn}
 	<!-Fixed label->
 	<div class="mdui-textfield">
