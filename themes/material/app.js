@@ -1,6 +1,6 @@
 // load in head necessary static
 document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdui/0.4.3/css/mdui.min.css">');
-document.write('<link rel="stylesheet" href="https://vjs.zencdn.net/7.7.6/video-js.css">');
+document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video-js.min.css">');
 // markdown support
 document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/10.0.0/markdown-it.min.js"></script>');
 document.write('<style>.mdui-appbar .mdui-toolbar{height:56px;font-size:1pc}.mdui-toolbar>*{padding:0 6px;margin:0 2px}.mdui-toolbar>i{opacity:.5}.mdui-toolbar>.mdui-typo-headline{padding:0 1pc 0 0}.mdui-toolbar>i{padding:0}.mdui-toolbar>a:hover,a.active,a.mdui-typo-headline{opacity:1}.mdui-container{max-width:980px}.mdui-list-item{transition:none}.mdui-list>.th{background-color:initial}.mdui-list-item>a{width:100%;line-height:3pc}.mdui-list-item{margin:2px 0;padding:0}.mdui-toolbar>a:last-child{opacity:1}@media screen and (max-width:980px){.mdui-list-item .mdui-text-right{display:none}.mdui-container{width:100%!important;margin:0}.mdui-toolbar>.mdui-typo-headline,.mdui-toolbar>a:last-child,.mdui-toolbar>i:first-child{display:block}}</style>');
@@ -29,15 +29,15 @@ html += `
 }
 
 function render(path){
-	if(path.indexOf("?") > 0){
-		path = path.substr(0,path.indexOf("?"));
-	}
+    if(path.indexOf("?") > 0){
+        path = path.substr(0,path.indexOf("?"));
+    }
     title(path);
     nav(path);
     if(path.substr(-1) == '/'){
-    	list(path);
+        list(path);
     }else{
-	    file(path);
+        file(path);
     }
 }
 
@@ -49,59 +49,59 @@ function title(path){
 
 // Nav
 function nav(path) {
-	var html = "";
-	html += `<a href="/" class="mdui-typo-headline folder">${document.siteName}</a>`;
-	var arr = path.trim('/').split('/');
-	var p = '/';
-	if (arr.length > 0) {
-		for (i in arr) {
-			var n = arr[i];
-			n = decodeURI(n);
-			p += n + '/';
-			if (n == '') {
-				break;
-			}
-			html += `<i class="mdui-icon material-icons mdui-icon-dark folder" style="margin:0;">chevron_right</i><a class="folder" href="${p}">${n}</a>`;
-		}
-	}
-	html += `<div class="mdui-toolbar-spacer"></div>`;
-	$('#nav').html(html);
+    var html = "";
+    html += `<a href="/" class="mdui-typo-headline folder">${document.siteName}</a>`;
+    var arr = path.trim('/').split('/');
+    var p = '/';
+    if (arr.length > 0) {
+        for (i in arr) {
+            var n = arr[i];
+            n = decodeURI(n);
+            p += n + '/';
+            if (n == '') {
+                break;
+            }
+            html += `<i class="mdui-icon material-icons mdui-icon-dark folder" style="margin:0;">chevron_right</i><a class="folder" href="${p}">${n}</a>`;
+        }
+    }
+    html += `<div class="mdui-toolbar-spacer"></div>`;
+    $('#nav').html(html);
 }
 
 // List files
 function list(path){
     var content = "";
-	content += `
-	<div id="head_md" class="mdui-typo" style="display:none;padding: 20px 0;"></div>`;
+    content += `
+    <div id="head_md" class="mdui-typo" style="display:none;padding: 20px 0;"></div>`;
     if(search){
         if(dark){content += `<div class="mdui-textfield"><input class="mdui-textfield-input mdui-text-color-white-text" id="searchInput" onkeyup="searchOnlyActiveDir()" type="text" placeholder="Type to search.."></input></div>`;
         }else{content += `<div class="mdui-textfield"><input class="mdui-textfield-input" id="searchInput" onkeyup="searchOnlyActiveDir()" type="text" placeholder="Type to search.."></input></div>`;}
     }
-	content += `<div class="mdui-row"> 
-	  <ul class="mdui-list"> 
-	   <li class="mdui-list-item th"> 
-	    <div class="mdui-col-xs-12 mdui-col-sm-7">
-	    File
-	<i class="mdui-icon material-icons icon-sort" data-sort="name" data-order="more">expand_more</i>
-	    </div> 
-	    <div class="mdui-col-sm-3 mdui-text-right">
+    content += `<div class="mdui-row"> 
+      <ul class="mdui-list"> 
+       <li class="mdui-list-item th"> 
+        <div class="mdui-col-xs-12 mdui-col-sm-7">
+        File
+    <i class="mdui-icon material-icons icon-sort" data-sort="name" data-order="more">expand_more</i>
+        </div> 
+        <div class="mdui-col-sm-3 mdui-text-right">
         Change the time
-	<i class="mdui-icon material-icons icon-sort" data-sort="date" data-order="downward">expand_more</i>
-	    </div> 
-	    <div class="mdui-col-sm-2 mdui-text-right">
-	     Size
-	<i class="mdui-icon material-icons icon-sort" data-sort="size" data-order="downward">expand_more</i>
-	    </div> 
-	    </li> 
-	  </ul> 
-	 </div> 
-	 <div class="mdui-row"> 
-	  <ul id="list" class="mdui-list"> 
-	  </ul> 
-	 </div>
-	 <div id="readme_md" class="mdui-typo" style="display:none; padding: 20px 0;"></div>
-	`;
-	$('#content').html(content);
+    <i class="mdui-icon material-icons icon-sort" data-sort="date" data-order="downward">expand_more</i>
+        </div> 
+        <div class="mdui-col-sm-2 mdui-text-right">
+         Size
+    <i class="mdui-icon material-icons icon-sort" data-sort="size" data-order="downward">expand_more</i>
+        </div> 
+        </li> 
+      </ul> 
+     </div> 
+     <div class="mdui-row"> 
+      <ul id="list" class="mdui-list"> 
+      </ul> 
+     </div>
+     <div id="readme_md" class="mdui-typo" style="display:none; padding: 20px 0;"></div>
+    `;
+    $('#content').html(content);
     $('#list').html(`<div class="mdui-progress"><div class="mdui-progress-indeterminate"></div></div>`);
     $('#readme_md').hide().html('');
     $('#head_md').hide().html('');
@@ -126,14 +126,14 @@ function list_files(path,files){
         item['size'] = formatFileSize(item['size']);
         if(item['mimeType'] == 'application/vnd.google-apps.folder'){
             html +=`<li class="mdui-list-item mdui-ripple"><a href="${p}" class="folder">
-	            <div class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate">
-	            <i class="mdui-icon material-icons">folder_open</i>
-	              ${item.name}
-	            </div>
-	            <div class="mdui-col-sm-3 mdui-text-right">${item['modifiedTime']}</div>
-	            <div class="mdui-col-sm-2 mdui-text-right">${item['size']}</div>
-	            </a>
-	        </li>`;
+                <div class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate">
+                <i class="mdui-icon material-icons">folder_open</i>
+                  ${item.name}
+                </div>
+                <div class="mdui-col-sm-3 mdui-text-right">${item['modifiedTime']}</div>
+                <div class="mdui-col-sm-2 mdui-text-right">${item['size']}</div>
+                </a>
+            </li>`;
         }else{
             var p = path+item.name;
             var c = "file";
@@ -143,24 +143,24 @@ function list_files(path,files){
                 });
             }
             if(item.name == "HEAD.md"){
-	            get_file(p, item, function(data){
+                get_file(p, item, function(data){
                     markdown("#head_md",data);
                 });
             }
             var ext = p.split('.').pop();
             if("|html|php|css|go|java|js|json|txt|sh|md|mp4|webm|avi|bmp|jpg|jpeg|png|gif|m4a|mp3|wav|ogg|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|".indexOf(`|${ext}|`) >= 0){
-	            p += "?a=view";
-	            c += " view";
+                p += "?a=view";
+                c += " view";
             }
             html += `<li class="mdui-list-item file mdui-ripple" target="_blank"><a gd-type="${item.mimeType}" href="${p}" class="${c}">
-	          <div class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate">
-	          <i class="mdui-icon material-icons">insert_drive_file</i>
-	            ${item.name}
-	          </div>
-	          <div class="mdui-col-sm-3 mdui-text-right">${item['modifiedTime']}</div>
-	          <div class="mdui-col-sm-2 mdui-text-right">${item['size']}</div>
-	          </a>
-	      </li>`;
+              <div class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate">
+              <i class="mdui-icon material-icons">insert_drive_file</i>
+                ${item.name}
+              </div>
+              <div class="mdui-col-sm-3 mdui-text-right">${item['modifiedTime']}</div>
+              <div class="mdui-col-sm-2 mdui-text-right">${item['size']}</div>
+              </a>
+          </li>`;
         }
     }
     $('#list').html(html);
@@ -168,185 +168,225 @@ function list_files(path,files){
 
 
 function get_file(path, file, callback){
-	var key = "file_path_"+path+file['modifiedTime'];
-	var data = localStorage.getItem(key);
-	if(data != undefined){
-		return callback(data);
-	}else{
-		$.get(path, function(d){
-			localStorage.setItem(key, d);
+    var key = "file_path_"+path+file['modifiedTime'];
+    var data = localStorage.getItem(key);
+    if(data != undefined){
+        return callback(data);
+    }else{
+        $.get(path, function(d){
+            localStorage.setItem(key, d);
             callback(d);
         });
-	}
+    }
 }
 
 
 
 // file display ?a=view
 function file(path){
-	var name = path.split('/').pop();
-	var ext = name.split('.').pop().toLowerCase().replace(`?a=view`,"");
-	if("|html|php|css|go|java|js|json|txt|sh|md|".indexOf(`|${ext}|`) >= 0){
-		return file_code(path);
-	}
+    var name = path.split('/').pop();
+    var ext = name.split('.').pop().toLowerCase().replace(`?a=view`,"");
+    if("|html|php|css|go|java|js|json|txt|sh|md|".indexOf(`|${ext}|`) >= 0){
+        return file_code(path);
+    }
 
-	if("|mp4|webm|avi|".indexOf(`|${ext}|`) >= 0){
-		return file_video(path);
-	}
+    if("|mp4|webm|avi|".indexOf(`|${ext}|`) >= 0){
+        return file_video(path);
+    }
 
-	if("|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|".indexOf(`|${ext}|`) >= 0){
-		return file_video(path);
-	}
-	
-	if("|mp3|wav|ogg|m4a|".indexOf(`|${ext}|`) >= 0){
-		return file_audio(path);
-	}
+    if("|mpg|mpeg|mkv|rm|rmvb|mov|wmv|asf|ts|flv|".indexOf(`|${ext}|`) >= 0){
+        return file_video(path);
+    }
+    
+    if("|mp3|wav|ogg|m4a|".indexOf(`|${ext}|`) >= 0){
+        return file_audio(path);
+    }
 
-	if("|bmp|jpg|jpeg|png|gif|".indexOf(`|${ext}|`) >= 0){
-		return file_image(path);
-	}
+    if("|bmp|jpg|jpeg|png|gif|".indexOf(`|${ext}|`) >= 0){
+        return file_image(path);
+    }
 }
 
 // file display |html|php|css|go|java|js|json|txt|sh|md|
 function file_code(path){
-	var type = {
-		"html":"html",
-		"php":"php",
-		"css":"css",
-		"go":"golang",
-		"java":"java",
-		"js":"javascript",
-		"json":"json",
-		"txt":"Text",
-		"sh":"sh",
-		"md":"Markdown",	
-	};
-	var name = path.split('/').pop();
-	var ext = name.split('.').pop();
-	var href = window.location.origin + path;
-	var content = `
+    var type = {
+        "html":"html",
+        "php":"php",
+        "css":"css",
+        "go":"golang",
+        "java":"java",
+        "js":"javascript",
+        "json":"json",
+        "txt":"Text",
+        "sh":"sh",
+        "md":"Markdown",    
+    };
+    var name = path.split('/').pop();
+    var ext = name.split('.').pop();
+    var href = window.location.origin + path;
+    var content = `
 <div class="mdui-container">
 <pre id="editor" ></pre>
 </div>
 <div class="mdui-textfield">
-	<label class="mdui-textfield-label">Download link</label>
-	<input class="mdui-textfield-input" type="text" value="${href}"/>
+    <label class="mdui-textfield-label">Download link</label>
+    <input class="mdui-textfield-input" type="text" value="${href}"/>
 </div>
 <a href="${href}" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ace.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.11/ext-language_tools.js"></script>
-	`;
-	$('#content').html(content);
-	
-	$.get(path, function(data){
-		$('#editor').html($('<div/>').text(data).html());
-		var code_type = "Text";
-		if(type[ext] != undefined ){
-			code_type = type[ext];
-		}
-		var editor = ace.edit("editor");
-	    editor.setTheme("ace/theme/ambiance");
-	    editor.setFontSize(18);
-	    editor.session.setMode("ace/mode/"+code_type);
-	    
-	    //Autocompletion
-	    editor.setOptions({
-	        enableBasicAutocompletion: true,
-	        enableSnippets: true,
-	        enableLiveAutocompletion: true,
-	        maxLines: Infinity
-	    });
-	});
+    `;
+    $('#content').html(content);
+    
+    $.get(path, function(data){
+        $('#editor').html($('<div/>').text(data).html());
+        var code_type = "Text";
+        if(type[ext] != undefined ){
+            code_type = type[ext];
+        }
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/ambiance");
+        editor.setFontSize(18);
+        editor.session.setMode("ace/mode/"+code_type);
+        
+        //Autocompletion
+        editor.setOptions({
+            enableBasicAutocompletion: true,
+            enableSnippets: true,
+            enableLiveAutocompletion: true,
+            maxLines: Infinity
+        });
+    });
 }
 
 // file display video |mp4|webm|avi|
 function file_video(path){
-	var url = window.location.origin + path;
-	var playBtn = `<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="iina://weblink?url=${url}"><i class="mdui-icon material-icons">play_circle_filled</i>Play in IINA</a><br><br><a href="https://iina.io/">   Don't have IINA?</a>`;
-	if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
-	    playBtn = `	<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="nplayer-${url}"><i class="mdui-icon material-icons">play_circle_filled</i>Play in nPlayer</a><br><br><a href="https://apps.apple.com/us/app/nplayer-lite/id1078835991">   Don't have nPlayer?</a>`;
-	}
-	var content = `
+    var url = window.location.origin + path;
+    var playBtn = `<a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="iina://weblink?url=${url}"><i class="mdui-icon material-icons">play_circle_filled</i>Play in IINA</a><br><br><a href="https://iina.io/">   Don't have IINA?</a>`;
+    if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
+        playBtn = ` <a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="nplayer-${url}"><i class="mdui-icon material-icons">play_circle_filled</i>Play in nPlayer</a><br><br><a href="https://apps.apple.com/us/app/nplayer-lite/id1078835991">   Don't have nPlayer?</a>`;
+    }
+    var content = `
 <div class="mdui-container-fluid">
-	<br>
-  	<video class="video-js" data-setup='{"autoplay": true, "preload": "auto", "fluid": true, "playbackRates": [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3], "controlBar": {"PlayToggle": true, "CurrentTimeDisplay": true, "DurationDisplay": true, "VolumePanel": {"inline": false}}
-  }'>
-  	<source src="${url}" type="video/mp4">
-    <p class="vjs-no-js"> To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
-  </video>
-  <script src="https://vjs.zencdn.net/7.7.6/video.js"></script>
+    <br>
+    <video id="myVideo" class="video-js vjs-big-play-centered">
+      <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a
+        web browser that
+        <a href="https://videojs.com/html5-video-support/" target="_blank">
+          supports HTML5 video
+        </a>
+      </p>
+    </video>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video.min.js"></script>
+    <script>
+    var player = videojs(document.getElementById('myVideo'), {
+      controls: true,
+      preload: 'auto',
+      autoplay: true,
+      fluid: true,
+      muted: false,
+      inactivityTimeout: false,
+      controlBar: {
+        children: [
+          {name: 'PlayToggle'}, // 播放按钮
+          {name: 'currentTimeDisplay'}, // 当前已播放时间
+          {name: 'TimeDivider'}, // 当前已播放时间
+          {name: 'ProgressControl'}, // 播放进度条
+          {name: 'DurationDisplay'}, // 总时间
+          { // 倍数播放
+            name: 'playbackRateMenuButton',
+            'playbackRates': [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3]
+          },
+          {
+            name: 'volumePanel', // 音量控制
+            inline: false, // 不使用水平方式
+          },
+          {name: 'FullscreenToggle'} // 全屏
+        ]
+      },
+      sources:[ // 视频源
+          {
+              src: '${url}',
+              type: 'video/mp4',
+          }
+      ]
+    }, function (){
+    });
+    </script>
 
-	<p>由于浏览器本身的限制，有些音频/视频格式无法在浏览器中播放，也无法外挂字幕文件，但可以用下面的播放器直接播放。</p>
-	<p>如果你没有对应播放器，可以点击播放按钮下方的"Don't have IINA"或"Don't have nPlaer"链接进行下载。</p>
-	<br>${playBtn}
-	<!-Fixed label->
-	<div class="mdui-textfield">
-	  <label class="mdui-textfield-label">download link</label>
-	  <input class="mdui-textfield-input" type="text" value="${url}"/>
-	</div>
+
+    <p>由于浏览器本身的限制，有些音频/视频格式无法在浏览器中播放，也无法外挂字幕文件，但可以用下面的播放器直接播放。</p>
+    <p>如果你没有对应播放器，可以点击播放按钮下方的"Don't have IINA"或"Don't have nPlaer"链接进行下载。</p>
+    <br>${playBtn}
+    <!-Fixed label->
+    <div class="mdui-textfield">
+      <label class="mdui-textfield-label">download link</label>
+      <input class="mdui-textfield-input" type="text" value="${url}"/>
+    </div>
 </div>
 <a href="${url}" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
-	`;
-	$('#content').html(content);
+    `;
+    $('#content').html(content);
 }
 
 // file display music |mp3|m4a|wav|ogg|
 function file_audio(path){
-	var url = window.location.origin + path;
-	var content = `
+    var url = window.location.origin + path;
+    var content = `
 <div class="mdui-container-fluid">
-	<br>
-	<audio class="mdui-center" preload controls>
-	  <source src="${url}"">
-	</audio>
-	<br>
-	<!-Fixed label->
-	<div class="mdui-textfield">
-	  <label class="mdui-textfield-label">Download link</label>
-	  <input class="mdui-textfield-input" type="text" value="${url}"/>
-	</div>
-	<div class="mdui-textfield">
-	  <label class="mdui-textfield-label">HTML reference</label>
-	  <textarea class="mdui-textfield-input"><audio><source src="${url}"></audio></textarea>
-	</div>
+    <br>
+    <audio class="mdui-center" preload controls>
+      <source src="${url}"">
+    </audio>
+    <br>
+    <!-Fixed label->
+    <div class="mdui-textfield">
+      <label class="mdui-textfield-label">Download link</label>
+      <input class="mdui-textfield-input" type="text" value="${url}"/>
+    </div>
+    <div class="mdui-textfield">
+      <label class="mdui-textfield-label">HTML reference</label>
+      <textarea class="mdui-textfield-input"><audio><source src="${url}"></audio></textarea>
+    </div>
 </div>
 <a href="${url}" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
-	`;
-	$('#content').html(content);
+    `;
+    $('#content').html(content);
 }
 
 
 // picture display
 function file_image(path){
-	var url = window.location.origin + path;
-	var content = `
+    var url = window.location.origin + path;
+    var content = `
 <div class="mdui-container-fluid">
-	<br>
-	<img class="mdui-img-fluid" src="${url}"/>
-	<br>
-	<div class="mdui-textfield">
-	  <label class="mdui-textfield-label">Download link</label>
-	  <input class="mdui-textfield-input" type="text" value="${url}"/>
-	</div>
-	<div class="mdui-textfield">
-	  <label class="mdui-textfield-label">HTML references</label>
-	  <input class="mdui-textfield-input" type="text" value="<img src='${url}' />"/>
-	</div>
+    <br>
+    <img class="mdui-img-fluid" src="${url}"/>
+    <br>
+    <div class="mdui-textfield">
+      <label class="mdui-textfield-label">Download link</label>
+      <input class="mdui-textfield-input" type="text" value="${url}"/>
+    </div>
+    <div class="mdui-textfield">
+      <label class="mdui-textfield-label">HTML references</label>
+      <input class="mdui-textfield-input" type="text" value="<img src='${url}' />"/>
+    </div>
         <div class="mdui-textfield">
-	  <label class="mdui-textfield-label">Markdown Reference</label>
-	  <input class="mdui-textfield-input" type="text" value="![](${url})"/>
-	</div>
+      <label class="mdui-textfield-label">Markdown Reference</label>
+      <input class="mdui-textfield-input" type="text" value="![](${url})"/>
+    </div>
         <br>
 </div>
 <a href="${url}" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
-	`;
-	$('#content').html(content);
+    `;
+    $('#content').html(content);
 }
 
 function searchOnlyActiveDir() {
-	var e, t, n, l;
-	for (e = document.getElementById("searchInput").value.toUpperCase(), t = document.getElementById("list").getElementsByTagName("li"), l = 0; l < t.length; l++)((n = t[l].getElementsByTagName("a")[0]).textContent || n.innerText).toUpperCase().indexOf(e) > -1 ? t[l].style.display = "" : t[l].style.display = "none"
+    var e, t, n, l;
+    for (e = document.getElementById("searchInput").value.toUpperCase(), t = document.getElementById("list").getElementsByTagName("li"), l = 0; l < t.length; l++)((n = t[l].getElementsByTagName("a")[0]).textContent || n.innerText).toUpperCase().indexOf(e) > -1 ? t[l].style.display = "" : t[l].style.display = "none"
 }
 
 // time conversion
