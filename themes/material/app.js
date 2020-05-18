@@ -270,15 +270,7 @@ function file_video(path){
 	var content = `
 <div class="mdui-container-fluid">
 	<br>
-  	<video class="video-js" data-setup='{"controls": true, "autoplay": true, "preload": "auto", "fluid": true, "playbackRates": [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3], "children": {
-    "controlBar": {
-      "playToggle": true,
-      "currentTimeDisplay": true,
-      "progressControl": true,
-      "durationDisplay": true
-
-    }
-  }
+  	<video class="video-js" data-setup='{"controls": true, "autoplay": true, "preload": "auto", "fluid": true, "playbackRates": [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3], "controlBar": {"playToggle": true, "volumePanel": {"inline": false}, "currentTimeDisplay": true, "durationDisplay": true}
   }'>
   	<source src="${url}" type="video/mp4">
     <p class="vjs-no-js"> To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
