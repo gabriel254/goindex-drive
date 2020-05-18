@@ -299,7 +299,7 @@ function file_video(path){
       preload: 'auto',
       autoplay: true,
       fluid: true,
-      liveui: true
+      liveui: true,
       muted: false,
       inactivityTimeout: false,
       controlBar: {
