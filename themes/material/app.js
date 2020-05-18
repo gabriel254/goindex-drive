@@ -269,7 +269,7 @@ function file_video(path){
         playBtn = ` <a class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent" href="nplayer-${url}"><i class="mdui-icon material-icons">play_circle_filled</i>Play in nPlayer</a><br><br><a href="https://apps.apple.com/us/app/nplayer-lite/id1078835991">   Don't have nPlayer?</a>`;
     }
     var content = `
-<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video.min.js"></script>
+
 <div class="mdui-container-fluid">
     <br>
     <video id="myVideo" class="video-js vjs-big-play-centered">
@@ -281,6 +281,18 @@ function file_video(path){
         </a>
       </p>
     </video>
+
+    <p>由于浏览器本身的限制，有些音频/视频格式无法在浏览器中播放，也无法外挂字幕文件，但可以用下面的播放器直接播放。</p>
+    <p>如果你没有对应播放器，可以点击播放按钮下方的"Don't have IINA"或"Don't have nPlaer"链接进行下载。</p>
+    <br>${playBtn}
+    <!-Fixed label->
+    <div class="mdui-textfield">
+      <label class="mdui-textfield-label">download link</label>
+      <input class="mdui-textfield-input" type="text" value="${url}"/>
+    </div>
+</div>
+<a href="${url}" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video.min.js"></script>
     <script>
     var player = videojs(document.getElementById('myVideo'), {
       controls: true,
@@ -316,16 +328,6 @@ function file_video(path){
     }, function (){
     });
     </script>
-    <p>由于浏览器本身的限制，有些音频/视频格式无法在浏览器中播放，也无法外挂字幕文件，但可以用下面的播放器直接播放。</p>
-    <p>如果你没有对应播放器，可以点击播放按钮下方的"Don't have IINA"或"Don't have nPlaer"链接进行下载。</p>
-    <br>${playBtn}
-    <!-Fixed label->
-    <div class="mdui-textfield">
-      <label class="mdui-textfield-label">download link</label>
-      <input class="mdui-textfield-input" type="text" value="${url}"/>
-    </div>
-</div>
-<a href="${url}" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
     `;
     $('#content').html(content);
 }
