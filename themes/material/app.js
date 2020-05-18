@@ -138,6 +138,9 @@ function list_files(path,files){
         }else{
             var p = path+item.name;
             var c = "file";
+            if(item.name == "favicon.ico"){
+                 continue;
+            }
             if(item.name == "README.md"){
                  get_file(p, item, function(data){
                     markdown("#readme_md",data);
