@@ -270,7 +270,7 @@ function file_video(path){
 	var content = `
 <div class="mdui-container-fluid">
 	<br>
-  	<video-js id="myVideo" class="video-js" controls preload="auto" width="640" height="264" data-setup="{}">
+  	<video-js id="myVideo" class="video-js">
     <p class="vjs-no-js"> To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
   </video-js>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video.min.js"></script>
@@ -280,7 +280,6 @@ var player = videojs(document.getElementById('myVideo'), {
   preload: 'auto',
   autoplay: false,
   fluid: true, // 自适应宽高
-  language: 'zh-CN', // 设置语言
   muted: false, // 是否静音
   inactivityTimeout: false,
   controlBar: { // 设置控制条组件
