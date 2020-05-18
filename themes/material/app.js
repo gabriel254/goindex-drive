@@ -270,13 +270,12 @@ function file_video(path){
 	var content = `
 <div class="mdui-container-fluid">
 	<br>
-  	<video class="video-js" data-setup='{"controls": true, "autoplay": true, "preload": "auto", "fluid": true, "playbackRates": [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3], "vjs-big-play-centered": true, "liveui": true, "language": "zh-CN", "controlBar": {"volumePanel": {"inline": false}, "CurrentTimeDisplay": true, "DurationDisplay": true}
+  	<video class="video-js" data-setup='{"controls": true, "autoplay": true, "preload": "auto", "fluid": true, "playbackRates": [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3], "vjs-big-play-centered": true, "vjs-big-play-button": true, "controlBar": {"volumePanel": {"inline": false}, "CurrentTimeDisplay": true, "DurationDisplay": true}
   }'>
   	<source src="${url}" type="video/mp4">
     <p class="vjs-no-js"> To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
   </video>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/lang/zh-CN.js"></script>
 
 	<p>由于浏览器本身的限制，有些音频/视频格式无法在浏览器中播放，也无法外挂字幕文件，但可以用下面的播放器直接播放。</p>
 	<p>如果你没有对应播放器，可以点击播放按钮下方的"Don't have IINA"或"Don't have nPlaer"链接进行下载。</p>
