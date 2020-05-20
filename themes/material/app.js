@@ -1,7 +1,6 @@
 // load in head necessary static
 document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdui/0.4.3/css/mdui.min.css">');
 document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gabriel254/goindex-drive/video-js.css">');
-// document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video.min.js"></script>');
 // markdown support
 document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/10.0.0/markdown-it.min.js"></script>');
 document.write('<style>.mdui-appbar .mdui-toolbar{height:56px;font-size:1pc}.mdui-toolbar>*{padding:0 6px;margin:0 2px}.mdui-toolbar>i{opacity:.5}.mdui-toolbar>.mdui-typo-headline{padding:0 1pc 0 0}.mdui-toolbar>i{padding:0}.mdui-toolbar>a:hover,a.active,a.mdui-typo-headline{opacity:1}.mdui-container{max-width:980px}.mdui-list-item{transition:none}.mdui-list>.th{background-color:initial}.mdui-list-item>a{width:100%;line-height:3pc}.mdui-list-item{margin:2px 0;padding:0}.mdui-toolbar>a:last-child{opacity:1}@media screen and (max-width:980px){.mdui-list-item .mdui-text-right{display:none}.mdui-container{width:100%!important;margin:0}.mdui-toolbar>.mdui-typo-headline,.mdui-toolbar>a:last-child,.mdui-toolbar>i:first-child{display:block}}</style>');
@@ -275,7 +274,7 @@ function file_video(path){
 
 <div class="mdui-container-fluid">
     <br>
-    <video id="video" class="video-js" controls preload="auto" autoplay="true" fluid="true"  data-setup='{"playbackRates": [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3], "controlBar": {"children": [{"name": "PlayToggle"},{"name": "CurrentTimeDisplay"},{"name": "ProgressControl"},{"name": "DurationDisplay"},{"name": "playbackRateMenuButton","playbackRates": [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3]},{"name": "volumePanel", "inline": false},{"name": "FullscreenToggle"}]}}'>
+    <video id="video" class="video-js" controls preload="auto" autoplay="true" fluid="true"  data-setup='{"playbackRates": [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3], "controlBar": {"children": [{"name": "PlayToggle"},{"name": "CurrentTimeDisplay"},{"name": "ProgressControl"},{"name": "DurationDisplay"},{"name": "playbackRateMenuButton","playbackRates": [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3]},{"name": "volumePanel", "inline": false},{"name": "PictureInPictureToggle"},{"name": "FullscreenToggle"}]}}'>
         <source src="${url}" type='video/mp4'>
         <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
     </video>
