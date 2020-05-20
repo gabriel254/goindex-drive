@@ -303,26 +303,11 @@ function file_video(path){
       preload: 'auto',
       autoplay: true,
       fluid: true,
-      liveui: true,
+      liveui: false,
       muted: false,
+      playbackRates: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3]
       inactivityTimeout: false,
-      controlBar: {
-        children: [
-          {name: 'PlayToggle'}, // 播放按钮
-          {name: 'CurrentTimeDisplay'}, // 当前已播放时间
-          {name: 'ProgressControl'}, // 播放进度条
-          {name: 'DurationDisplay'}, // 总时间
-          { // 倍数播放
-            name: 'playbackRateMenuButton',
-            'playbackRates': [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3]
-          },
-          {
-            name: 'volumePanel', // 音量控制
-            inline: false, // 不使用水平方式
-          },
-          {name: 'FullscreenToggle'} // 全屏
-        ]
-      },
+
       sources:[ // 视频源
           {
               src: '${url}',
