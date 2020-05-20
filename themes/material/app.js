@@ -1,6 +1,6 @@
 // load in head necessary static
 document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdui/0.4.3/css/mdui.min.css">');
-document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video-js.min.css">');
+document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gabriel254/goindex-drive/video-js.css">');
 // document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video.min.js"></script>');
 // markdown support
 document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/10.0.0/markdown-it.min.js"></script>');
