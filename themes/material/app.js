@@ -1,6 +1,5 @@
 // load in head necessary static
 document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdui/0.4.3/css/mdui.min.css">');
-// document.write('<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/gabriel254/goindex-drive/video-js.css">');
 document.write('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video-js.min.css">');
 document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.8.1/video.min.js"></script>');
 // markdown support
@@ -303,11 +302,26 @@ function file_video(path){
       preload: 'auto',
       autoplay: true,
       fluid: true,
-      liveui: false,
+      liveui: true,
       muted: false,
-      playbackRates: [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3],
       inactivityTimeout: false,
-
+      controlBar: {
+        children: [
+          {name: 'PlayToggle'}, // 播放按钮
+          {name: 'CurrentTimeDisplay'}, // 当前已播放时间
+          {name: 'ProgressControl'}, // 播放进度条
+          {name: 'DurationDisplay'}, // 总时间
+          { // 倍数播放
+            name: 'playbackRateMenuButton',
+            'playbackRates': [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 3]
+          },
+          {
+            name: 'volumePanel', // 音量控制
+            inline: false, // 不使用水平方式
+          },
+          {name: 'FullscreenToggle'} // 全屏
+        ]
+      },
       sources:[ // 视频源
           {
               src: '${url}',
